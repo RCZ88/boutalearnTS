@@ -1,6 +1,5 @@
 // import * as RouterClient from './client';
 import * as readline from "node:readline";
-import {string} from "zod";
 
 
 // async function checkStatus(): Promise<RouterClient.RouterResult<unknown>> {
@@ -102,11 +101,11 @@ const nigger:example = {
     age:67,
     active:true,
 }
-
-let name =pluck(nigger, "name")
-if(name){
-    console.log(name)
-}
+//
+// let name =pluck(nigger, "name")
+// if(name){
+//     console.log(name)
+// }
 
 
 const rl = readline.createInterface({
@@ -378,7 +377,7 @@ function longestSubarray(nums: number[], target: number): number {
 
 
 
-import {HeapTree} from "./heapTree"
+import {HeapTree} from "./heapTree.js"
 function getKthElement(arr:number[], k: number){
     let ht = new HeapTree();
     for(let num of arr){
@@ -398,7 +397,7 @@ function getKthElement(arr:number[], k: number){
 
 
 async function main(){
-    let userInput:string = await input("enter an input", String);
+    /*let userInput:string = await input("enter an input", String);
     let inray: string[] = userInput.split(" ").map(x => x.toLowerCase())
     let nums: number[] = [];
     let failToParse = 0;
@@ -409,7 +408,7 @@ async function main(){
             return;
         }
         failToParse++;
-    });
+    });*/
 
     //Frequency - HashMap Count
     /*
@@ -433,10 +432,16 @@ async function main(){
     console.log(uniqueCount)*/
 
     //Move Zeros
-    console.log("Move Zeros")
+    /*console.log("Move Zeros")
     moveZeros(nums);
     console.log(nums.join(" "))
+*/
 
+    let ht = new HeapTree(true);
+    let nums = [5,6,3,13,32,15,23,45,23]
+    ht.insertList(nums);
+    let str = ht.arr.join(", ");
+    console.log(`heap Arr: ${str}`)
 }
 
 main();
