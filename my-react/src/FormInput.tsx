@@ -9,8 +9,6 @@ type RadioOptionValues = {
     onCheck: (value: string) =>void;
 }
 
-
-
 export function RadioOption(rov:RadioOptionValues){
     return (
         <>
