@@ -1,0 +1,82 @@
+
+.stat-card {
+    min-width: 0;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+}
+
+.stat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.stat-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+.stat-card-body {
+    margin-top: 18px;
+}
+
+.stat-value {
+    margin: 0;
+    color: var(--foreground);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-description {
+    margin: 8px 0 0;
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Optional status variants */
+.stat-card.completed .stat-icon {
+    background: var(--success-soft);
+    color: var(--success);
+}
+
+.stat-card.completed .stat-value {
+    color: var(--success);
+}
+
+.stat-card.pending .stat-icon {
+    background: var(--warning-soft);
+    color: var(--warning);
+}
+
+.stat-card.pending .stat-value {
+    color: var(--warning);
+}
+
+.stat-card.in-progress .stat-icon {
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+.stat-card.in-progress .stat-value {
+    color: var(--primary);
+}

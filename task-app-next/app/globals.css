@@ -1,0 +1,122 @@
+
+@import "tailwindcss";
+
+/* ========================================
+   Design tokens
+   ======================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Page and surfaces */
+  --background: #F7F8FA;
+  --surface: #FFFFFF;
+  --surface-muted: #F1F5F9;
+
+  /* Text */
+  --foreground: #1E293B;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+
+  /* Borders */
+  --border: #E2E8F0;
+  --border-strong: #CBD5E1;
+
+  /* Primary actions */
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-soft: #EFF6FF;
+
+  /* Semantic colors */
+  --success: #15803D;
+  --success-soft: #DCFCE7;
+
+  --warning: #A16207;
+  --warning-soft: #FEF3C7;
+
+  --danger: #DC2626;
+  --danger-hover: #B91C1C;
+  --danger-soft: #FEE2E2;
+
+  /* Shape and depth */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-card:
+          0 1px 2px rgb(15 23 42 / 4%),
+          0 1px 3px rgb(15 23 42 / 3%);
+
+  --shadow-popover:
+          0 8px 24px rgb(15 23 42 / 8%);
+
+  /* Typography */
+  --font-sans: Arial, Helvetica, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ========================================
+   Base styles
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+  color-scheme: light;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Consistent form typography */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+/* Keyboard accessibility */
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Text selection */
+
+::selection {
+  background: #DBEAFE;
+  color: #1E3A8A;
+}
+
+/* Scrollbars */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 transparent;
+}

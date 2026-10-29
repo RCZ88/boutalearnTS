@@ -1,0 +1,40 @@
+
+.filters-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.filter-button {
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    background: white;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.filter-button:hover {
+    background: #F1F5F9;
+}
+
+.filter-button.selected {
+    background: #1D4ED8;
+    border-color: #1D4ED8;
+    color: white;
+}
+
+.filter-button.selected:hover {
+    background: #1E40AF;
+}
+
+.filter-button:focus-visible {
+    outline: 2px solid #60A5FA;
+    outline-offset: 2px;
+}
+
+
