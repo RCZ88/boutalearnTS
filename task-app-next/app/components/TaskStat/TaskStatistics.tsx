@@ -1,10 +1,9 @@
-import {TaskFilter} from "@/app/TaskFilter";
-import {states} from "@/app/AddTaskForm";
+import {TaskFilter} from "@/app/components/TaskFilter/TaskFilter";
+import {states} from "@/app/components/AddTaskForm/AddTaskForm";
 import {CardContainer} from "@/app/Card";
-import {TaskStat} from "./page"
-import {Status} from "./TaskItemProps"
 import "./TaskStatistics.css"
 import "lucide-react"
+import {Status, TaskStat} from "@/app/types/task";
 
 type StatisticsData = {
     taskStat:Record<string, TaskStat>

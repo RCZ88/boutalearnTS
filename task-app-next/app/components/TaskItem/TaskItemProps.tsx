@@ -1,15 +1,6 @@
 import type {CSSProperties} from "react";
-import {Trash2, Check} from "lucide-react";
 import "./TaskItem.css";
-
-export type Status = 'pending' | 'in-progress' | 'completed';
-// the data. This is what lives in state.
-export type Task = {
-    id: number;
-    title: string;
-    done: Status;
-    dateAdded:Date;
-};
+import {Status, Task} from "@/app/types/task";
 
 // what the component receives. Data plus actions.
 type TaskItemProps = {
@@ -38,7 +29,7 @@ export function TaskItem({task, onToggle, onDelete}:TaskItemProps) {
     <li>
         <div className="task-item">
             <span className="task-title">{task.title} </span>
-            <span className={`task-status ${task.done}`}> [{task.done}]</span>
+            <span className={`task-status ${task.status}`}> [{task.status}]</span>
 
             <button className={"task-action-button change-status-button"} onClick={ () => onToggle(task.id)} aria-label = "Change Status" >
                 {/*<Check size={18}/> */}

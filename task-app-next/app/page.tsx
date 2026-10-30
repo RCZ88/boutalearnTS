@@ -6,39 +6,23 @@
 "use client";
 
 import './App.css'
-import {TaskItem, type Status, type Task} from "./TaskItemProps";
-import {CardContainer, Orientation} from "./Card";
-import {AddTaskForm, states} from "./AddTaskForm";
-import React, {useState, useEffect} from "react";
-import {TaskFilter} from "./TaskFilter";
-import {TaskStatistics} from "./TaskStatistics";
+import {TaskItem} from "./components/TaskItem/TaskItemProps";
+import {CardContainer} from "./Card";
+import {AddTaskForm, states} from "./components/AddTaskForm/AddTaskForm";
+import React, {useEffect, useState} from "react";
+import {TaskFilter} from "./components/TaskFilter/TaskFilter";
+import {TaskStatistics} from "./components/TaskStat/TaskStatistics";
 import "lucide-react"
 import {ChartNoAxesCombined, CircleCheck, CircleDashed, Clock, ListTodo} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
-type TaskWithCookie = {
-  tasks:Record<number, Task>,
-  expiryDate: number,
-}
-
-export type TaskStat = {
-  statTitle:string,
-  value:number,
-  percentage?:boolean,
-  icon:LucideIcon,
-  // totalTaskCount: number,
-  // completedTaskCount: number,
-  // pendingTaskCount: number,
-  // inProgressTaskCount: number,
-  // completionPercentage: number,
-}
+import {Status, Task, TaskStat} from "@/app/types/task";
+import {TaskWithCookie} from "@/app/constants/task";
 
 
-const builtInTasks:TaskWithCookie = {
+export const builtInTasks:TaskWithCookie = {
   tasks:{
-    1: {id: 1, title: "Learn JSX", done: 'pending',  dateAdded: new Date("2026-10-29")},
-    2: {id: 2, title: "Learn state", done: 'completed', dateAdded: new Date("2026-9-12")},
-    3: {id: 3, title: "Build a project", done: 'in-progress', dateAdded: new Date("2025-01-29")},
+    1: {id: 1, title: "Learn JSX", status: 'pending',  dateAdded: new Date("2026-10-29")},
+    2: {id: 2, title: "Learn state", status: 'completed', dateAdded: new Date("2026-9-12")},
+    3: {id: 3, title: "Build a project", status: 'in-progress', dateAdded: new Date("2025-01-29")},
   },
   expiryDate: Date.now(),
 };
@@ -82,7 +66,7 @@ export default function Home() {
 
   function addTask(){
     if(titleText.length <= 0 || titleText === "")return;
-    const newTask:Task = {id: getId(), title: titleText, done: status, dateAdded: new Date()};
+    const newTask:Task = {id: getId(), title: titleText, status: status, dateAdded: new Date()};
     setTasks(prevTask =>({
       tasks: {...prevTask.tasks, [newTask.id]: newTask},
       expiryDate: tasks.expiryDate + seconds,
@@ -108,9 +92,9 @@ export default function Home() {
     let allTaskValues = Object.values(tasks.tasks);
     stat["totalTaskCount"].value = allTaskValues.length;
     Object.values(tasks.tasks).map(task =>{
-      task.done === "completed" && stat["completed"].value++;
-      task.done === "pending" && stat["pending"].value++;
-      task.done === "completed" && stat["in-progress"].value ++;
+      task.status === "completed" && stat["completed"].value++;
+      task.status === "pending" && stat["pending"].value++;
+      task.status === "completed" && stat["in-progress"].value ++;
     });
     stat["completionPercentage"].value = stat["completed"].value / stat["totalTaskCount"].value * 100;
     return stat;
@@ -126,7 +110,7 @@ export default function Home() {
   function toggleTaskState(id:number){
     console.log(id);
     setTasks(prevTask => ({
-      tasks:{...prevTask.tasks, [id]: {...prevTask.tasks[id], done: statesMap[prevTask.tasks[id].done]}},
+      tasks:{...prevTask.tasks, [id]: {...prevTask.tasks[id], status: statesMap[prevTask.tasks[id].status]}},
       expiryDate: tasks.expiryDate,
     }));
   }
@@ -139,7 +123,7 @@ export default function Home() {
   function getTaskOfState(state:Status):Array<Task>{
     const ts:Array<Task> = Array();
     Object.values(tasks.tasks).map(task =>{
-      if(task.done === state){
+      if(task.status === state){
         ts.push(task);
       }
     })

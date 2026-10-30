@@ -1,6 +1,6 @@
-import type {Status} from "./TaskItemProps";
 import {useState} from "react";
 import "./TaskFilter.css"
+import {Status} from "@/app/types/task";
 
 
 type FilterInput = {

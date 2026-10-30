@@ -1,9 +1,9 @@
-import {RadioOption} from "./FormInput";
-import type {Status} from "./TaskItemProps";
+import {RadioOption} from "../../FormInput";
 import * as React from "react";
 import {useState} from "react";
-import {CardContainer} from "./Card";
-import "./AppTaskForm.css"
+import {CardContainer} from "../../Card";
+import "./AddTaskForm.css"
+import {Status} from "@/app/types/task";
 
 
 type AddTaskFormProps = {addTask: () => void, count:number, setStatus: React.Dispatch<React.SetStateAction<Status>>};
